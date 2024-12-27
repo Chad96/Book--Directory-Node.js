@@ -4,7 +4,7 @@ const path = require('path');
 const multer = require('multer'); // For handling image uploads
 const app = express();
 const { v4: uuidv4 } = require('uuid'); // For generating unique IDs for books
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(express.json());
 
@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     cb(null, imagePath); // Save uploaded images in the 'uploads' directory
   },
   filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);// Generate a random 9-digit number
     cb(null, uniqueSuffix + '-' + file.originalname); // Save the file with a unique name
   }
 });
